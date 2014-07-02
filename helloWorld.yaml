@@ -1,0 +1,28 @@
+heat_template_version: 2013-05-23
+
+description: Create an empty VM
+
+parameters:
+  image_name:
+    type: string
+    description: Name of image to use for server
+
+  flavor_name:
+    type: string
+    description: Name Flavor to use for server
+
+resources:
+  Server:
+    type: OS::Nova::Server
+    properties:
+      flavor: { get_param: flavor_name }
+      image: { get_param: image_name }
+      name: testInstance
+      user_data: |
+        #!/usr/bin/env bash
+        echo "hello world" > hello.txt
+
+outputs:
+  public_ip:
+    description: The public IP address of the newly configured Server.
+    value: { get_attr: [ Server, first_address ] }
