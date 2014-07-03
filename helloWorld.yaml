@@ -11,13 +11,25 @@ parameters:
     type: string
     description: Name Flavor to use for server
 
+  net_id:
+    type: string
+    description: Neutron Network ID
+
+  keyName:
+    type: string
+    description: key for the VM
+
 resources:
   Server:
     type: OS::Nova::Server
     properties:
+      networks:
+        - uuid: { get_param: net_id }
+#        - uuid: 6802a24d-6195-4128-b4af-6abb82799a45
       flavor: { get_param: flavor_name }
       image: { get_param: image_name }
-      name: testInstance
+      name: SinaTestInstance2
+      key_name: { get_param: keyName }
       user_data: |
         #!/usr/bin/env bash
         echo "hello world" > hello.txt
