@@ -6,12 +6,12 @@ parameters:
   image_name:
     type: string
     description: Name of image to use for server
-	default: helloWorldVM
+    default: helloWorldVM
 
   flavor_name:
     type: string
     description: Name Flavor to use for server
-	default: m1.small
+    default: m1.small
 
   net_id:
     type: string
@@ -20,7 +20,7 @@ parameters:
   keyName:
     type: string
     description: key for the VM
-	default: test_key
+    default: test_key
 
 resources:
   Server:
