@@ -18,7 +18,7 @@ parameters:
     type: string
     description: Name of VM instance (server)
     default: wordpress
-	
+
   instance_type:
     type: string
     description: Instance type for web and DB servers
