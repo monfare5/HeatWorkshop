@@ -6,7 +6,7 @@ parameters:
   image_name:
     type: string
     description: Name of image to use for server
-    default: Ubuntu64.2
+    default: Ubuntu64.2.1
 
   flavor_name:
     type: string
