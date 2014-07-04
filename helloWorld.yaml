@@ -6,7 +6,7 @@ parameters:
   image_name:
     type: string
     description: Name of image to use for server
-    default: helloWorldVM
+    default: Ubuntu64.2
 
   flavor_name:
     type: string
@@ -21,6 +21,12 @@ parameters:
     type: string
     description: key for the VM
     default: test_key
+	
+  instanceName:
+    type: string
+    description: Name of VM instance (server)
+    default: helloWorldVM
+  
 
 resources:
   Server:
@@ -31,7 +37,7 @@ resources:
 #        - uuid: 6802a24d-6195-4128-b4af-6abb82799a45
       flavor: { get_param: flavor_name }
       image: { get_param: image_name }
-      name: SinaTestInstance2
+      name: { get_param: instanceName }
       key_name: { get_param: keyName }
       user_data: |
         #!/usr/bin/env bash
