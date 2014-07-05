@@ -20,7 +20,6 @@ parameters:
   keyName:
     type: string
     description: key for the VM
-    default: test_key
 
   instanceName:
     type: string

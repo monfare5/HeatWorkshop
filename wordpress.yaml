@@ -12,7 +12,6 @@ parameters:
   keyName:
     type: string
     description : Name of a KeyPair to enable SSH access to the instance
-    default: test_key
 
   instanceName:
     type: string
@@ -236,7 +235,7 @@ outputs:
     description: URL for Wordpress wiki
     value:
       str_replace:
-        template: http://host/wordpress
+        template: http://host
         params:
           host: { get_attr: [WebServer, first_address] }
 
