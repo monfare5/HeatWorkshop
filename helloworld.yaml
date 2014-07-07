@@ -1,0 +1,48 @@
+heat_template_version: 2013-05-23
+
+description: Create an empty VM
+
+parameters:
+  image_name:
+    type: string
+    description: Name of image to use for server
+    default: Ubuntu64.2.1
+
+  flavor_name:
+    type: string
+    description: Name Flavor to use for server
+    default: m1.small
+
+  net_id:
+    type: string
+    description: Neutron Network ID
+
+  key_name:
+    type: string
+    description: key for the VM
+
+  instance_name:
+    type: string
+    description: Name of VM instance (server)
+    default: helloWorldVM
+  
+
+resources:
+  Server:
+    type: OS::Nova::Server
+    properties:
+      networks:
+        - uuid: { get_param: net_id }
+#        - uuid: 6802a24d-6195-4128-b4af-6abb82799a45
+      flavor: { get_param: flavor_name }
+      image: { get_param: image_name }
+      name: { get_param: instance_name }
+      key_name: { get_param: key_name }
+      user_data: |
+        #!/usr/bin/env bash
+        echo "hello world" > hello.txt
+
+outputs:
+  ip:
+    description: The IP address of the newly configured Server.
+    value: { get_attr: [ Server, first_address ] }
