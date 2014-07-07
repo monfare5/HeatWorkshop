@@ -13,11 +13,6 @@ parameters:
     type: string
     description : Name of a KeyPair to enable SSH access to the instance
 
-  instance_name:
-    type: string
-    description: Name of VM instance (server)
-    default: wordpress
-
   instance_type:
     type: string
     description: Instance type for web and DB servers
@@ -37,7 +32,6 @@ parameters:
         description: >
           db_name must begin with a letter and contain only alphanumeric
           characters
-
 
   db_username:
     type: string

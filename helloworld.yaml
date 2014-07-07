@@ -33,14 +33,13 @@ resources:
     properties:
       networks:
         - uuid: { get_param: net_id }
-#        - uuid: 6802a24d-6195-4128-b4af-6abb82799a45
       flavor: { get_param: flavor_name }
       image: { get_param: image_name }
       name: { get_param: instance_name }
       key_name: { get_param: key_name }
       user_data: |
         #!/usr/bin/env bash
-        echo "hello world" > hello.txt
+        echo "hello world" > /home/ubuntu/hello.txt
 
 outputs:
   ip:
