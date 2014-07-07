@@ -13,7 +13,7 @@ parameters:
     type: string
     description : Name of a KeyPair to enable SSH access to the instance
 
-  instanceName:
+  instance_name:
     type: string
     description: Name of VM instance (server)
     default: wordpress
